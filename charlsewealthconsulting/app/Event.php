@@ -14,6 +14,10 @@ class Event extends Model
     
     protected $fillable = ['name_text', 'description_text', 'id_eventbrite', 'url', 'start_local', 'end_local', 'created', 'changed', 'capacity', 'status', 'is_free', 'logo_url'];
 
+    public function image_galleries(){
+        return $this->hasMany('App\ImageGallery');
+    }
+
     // Would initialize an Event() fetched from eventbrite
     public static function initializeEvent ($event) {
         $new_event = new static();
