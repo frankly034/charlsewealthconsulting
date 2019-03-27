@@ -15,6 +15,7 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::latest()->get();
+
         return $services;
 
     }
@@ -37,8 +38,15 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate([
+            'service_name' => 'required|string',
+            'description' => 'nullable|string',
+            'image_url' => 'nullable|string'
+        ]);
         $service = new Service;
         $service->service_name = $request->service_name;
+        $service->description = $request->description;
+        $service->image_url = $request->image_url;
         $service->save();
         return $service;
 
@@ -78,7 +86,15 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate([
+            'service_name' => 'required|string',
+            'description' => 'nullable|string',
+            'image_url' => 'nullable|string'
+        ]);
+        
         $service = Service::findOrFail($id);
+        $service->description = $request->description;
+        $service->image_url = $request->image_url;
         $service->service_name = $request->service_name;
         $service->update();
         return $service;
