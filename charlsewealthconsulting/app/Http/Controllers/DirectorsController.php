@@ -39,13 +39,21 @@ class DirectorsController extends Controller
         $this->validate([
             'name' => 'required|string',
             'description' => 'required',
-            'specialisation' =>'nullable'
+            'specialisation' =>'nullable',
+            'image_url' => 'nullable',
+            'twitter' => 'nullable',
+            'facebook' => 'nullable',
+            'intagram' => 'nullable'
         ]);
 
         $director = new Directors();
         $director->name = $request->name;
         $director->description = $request->description;
         $director->specialisation = $request->specialisation;
+        $director->image_url = " ";
+        $director->twitter = $request->twitter;
+        $director->facebook = $request->facebook;
+        $director->instagram = $request->instagram;
         $director->save();
         return $director;
     }
@@ -85,10 +93,25 @@ class DirectorsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate([
+            'name' => 'required|string',
+            'description' => 'required',
+            'specialisation' =>'nullable',
+            'image_url' => 'nullable',
+            'twitter' => 'nullable',
+            'facebook' => 'nullable',
+            'intagram' => 'nullable'
+        ]);
+
         $director = Directors::findOrFail($id);
         $director->name = $request->name;
         $director->description = $request->description;
         $director->specialisation = $request->specialisation;
+        $director->image_url = " ";
+        $director->twitter = $request->twitter;
+        $director->facebook = $request->facebook;
+        $director->instagram = $request->instagram;
+       
         $director->update();
         return $director;
 
