@@ -18,6 +18,10 @@ class Event extends Model
         return $this->hasMany('App\ImageGallery');
     }
 
+    public function speakers(){
+        return $this->hasMany('App\Speaker');
+    }
+
     // Would initialize an Event() fetched from eventbrite
     public static function initializeEvent ($event) {
         $new_event = new static();

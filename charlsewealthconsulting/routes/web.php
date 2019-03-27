@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::resource('/events', 'EventController');
 
 Route::resource('/gallery', 'ImageGalleryController');
+
+Route::resource('/speakers', 'SpeakerController');
