@@ -16,12 +16,13 @@ Route::get('/', function () {
 });
 
 Route::resource('/products', 'ProductsController');
-Route::get('/reduce/{id}', 'ProductsController@reduceItemByOne')->name('product.reduceByOne');
+
 Route::group(['prefix' => '/cart'], function () {
-    Route::get('add_to_cart/{id}', 'ProductsController@AddToCart')->name('product.addToCart');
-    //Route::get('/clean', 'ProductsController@resetSession');
-    Route::get('get_cart', 'ProductsController@getCart');
-    Route::get('/remove_all/{id}', 'ProductsController@removeAllItem')->name('product.removeItem');
+    Route::get('/{id}/add', 'ProductsController@addToCart')->name('product.addToCart');
+    Route::get('/{id}/reduce', 'ProductsController@reduceItemByOne')->name('product.reduceByOne');
+    Route::get('/empty', 'ProductsController@emptyCart');
+    Route::get('/get_cart', 'ProductsController@getCart');
+    Route::get('/{id}/remove', 'ProductsController@removeItem')->name('product.removeItem');
 
 });
 

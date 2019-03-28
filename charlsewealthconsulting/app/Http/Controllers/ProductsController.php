@@ -17,10 +17,7 @@ class ProductsController extends Controller
         $cart->add($product, $product->id);
 
         $request->session()->put('cart', $cart);
-        return $request->session()->get('cart');
-
-        
-
+        return json_encode($request->session()->get('cart'));
     }
 
     public function reduceItemByOne($id, Request $request){
@@ -28,33 +25,26 @@ class ProductsController extends Controller
         $cart = new Cart($oldCart);
         $cart->reduceByOne($id);
         Session::put('cart', $cart);
-        return $request->session()->get('cart');
+        return json_encode($request->session()->get('cart'));
         
     }
 
-    public function removeAllItem(Request $request, $id){
+    public function removeItem(Request $request, $id){
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
         Session::put('cart', $cart);
-        return $request->session()->get('cart');
+        return json_encode($request->session()->get('cart'));
     }
 
-    //public function resetSession(Request $request){
-     //return $request->session()->flush();
-   //}
+    public function emptyCart(Request $request){
+      $request->session()->forget('cart');
+      return json_encode($request->session()->get('cart'));
+   }
 
-    public function getCart( Request $request){
-        if(!$request->session()->has('cart')){
-            //return view('shop.shopping_cart');
-        }
-        $oldCart = $request->session()->get('cart');
-        $cart = new Cart($oldCart);
-        dd($request->session()->get('cart'));
-        //return $cart;
-       // $product = $cart->items;
-        //$totalPrice = $cart->total->price;
-        //return view('shop.shopping_cart');
+    public function getCart(Request $request){
+        $cart = $request->session()->has('cart') ? $request->session()->get('cart') : new Cart();
+        return $cart;
     }
     /**
      * Display a listing of the resource.
