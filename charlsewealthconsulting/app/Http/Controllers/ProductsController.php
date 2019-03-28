@@ -10,49 +10,48 @@ use App\http\Requests;
 class ProductsController extends Controller
 {
     //this handles adding iteems to the shopping cart
-    public function getAddToCart(Request $request, $id){
+    public function AddToCart(Request $request, $id){
         $product = Products::findOrFail($id);
         $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
 
         $request->session()->put('cart', $cart);
-        return $request->session()->all();
+        return $request->session()->get('cart');
 
         
 
     }
 
-    public function getReduceByOne($id, Request $request){
+    public function ReduceItemByOne($id, Request $request){
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->reduceByOne($id);
         Session::put('cart', $cart);
-        return $request->session()->all();
+        return $request->session()->get('cart');
         
     }
 
-    public function getRemoveItem(Request $request, $id){
+    public function RemoveAllItem(Request $request, $id){
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
         Session::put('cart', $cart);
-        return $request->session()->all();
+        return $request->session()->get('cart');
     }
 
-    public function resetSession(Request $request){
-     return $request->session()->flush();
-   }
+    //public function resetSession(Request $request){
+     //return $request->session()->flush();
+   //}
 
     public function getCart( Request $request){
         if(!$request->session()->has('cart')){
-            return " 123";
-            return view('shop.shopping_cart');
+            //return view('shop.shopping_cart');
         }
         $oldCart = $request->session()->get('cart');
         $cart = new Cart($oldCart);
         dd($request->session()->get('cart'));
-        return $cart;
+        //return $cart;
        // $product = $cart->items;
         //$totalPrice = $cart->total->price;
         //return view('shop.shopping_cart');
@@ -136,6 +135,13 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate([
+            'product_name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'image_url' => 'nullable|string'
+        ]);
+        
         $products::findOrFail($id);
         $product_all = $request->all();
         $product->fill($product_all)->update();
