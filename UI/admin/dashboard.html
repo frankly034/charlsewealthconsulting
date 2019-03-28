@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CharlseWealth Company | dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/cw-admin.css">
+
+</head>
+
+<body class=''>
+  <div class='flex-col wrapper'>
+    <header class='flex-row-sm top-nav bg-dark-theme'>
+      <h1 class='flex-2 font-md'><a href="../index.html" class='light'>CharlseWealth Company</a></a></h1>
+      <span class="font-300 flex-1 text-right pr-2 mr-5 mt-1">Admin</span>
+    </header>
+
+    <main class='flex-1 mt-6'>
+      <div class='flex-row'>
+        <section class='px-3 py-3 ml-2 border-primary-r-lg-1 flex-1 mt-0'>
+          <nav class=''>
+            <button class='button mb-2 toggler' data-toggle='#mynav'>
+              Menu
+            </button>
+            <ul class='nav nav-stack' id='mynav'>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Directors</a></li>
+              <li><a href="#">Store</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </nav>
+        </section>
+
+        <section class='px-3 py-3 flex-4 '>
+          <section class='ml-4 flex-row'>
+            <div class='tab'>
+              <header class=''>
+                <ul class='nav'>
+                  <li><a href="#">Events</a></li>
+                  <li><a href="#">Gallery</a></li>
+                  <li><a href="#">Directors</a></li>
+                </ul>
+              </header>
+              <section>
+                <div class="tab" id="events">
+                  <h2>Events</h2>
+                </div>
+                <div class="tab" id="gallery">
+                  <h2>Gallery</h2>
+                </div>
+                <div class="tab" id="director">
+                  <h2>Directors</h2>
+                </div>
+              </section>
+            </div>
+
+          </section>
+        </section>
+      </div>
+    </main>
+
+
+    <footer class='bg-dark-theme py-3'>
+      <p class='text-center'>Charles Wealth Company &copy; 2019. BitHub</p>
+    </footer>
+  </div>
+
+  <script src="../js/lib2.js"></script>
+</body>
+
+</html>
