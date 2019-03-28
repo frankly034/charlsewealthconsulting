@@ -16,3 +16,10 @@ Route::get('/', function () {
 });
 
 Route::resource('/directors', 'DirectorsController');
+
+Route::resource('/events', 'EventController');
+
+Route::resource('/gallery', 'ImageGalleryController');
+
+Route::resource('/speakers', 'SpeakerController');
+
