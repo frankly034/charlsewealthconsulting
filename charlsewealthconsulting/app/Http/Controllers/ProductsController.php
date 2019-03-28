@@ -10,7 +10,7 @@ use App\http\Requests;
 class ProductsController extends Controller
 {
     //this handles adding iteems to the shopping cart
-    public function AddToCart(Request $request, $id){
+    public function addToCart(Request $request, $id){
         $product = Products::findOrFail($id);
         $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
         $cart = new Cart($oldCart);
@@ -23,7 +23,7 @@ class ProductsController extends Controller
 
     }
 
-    public function ReduceItemByOne($id, Request $request){
+    public function reduceItemByOne($id, Request $request){
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->reduceByOne($id);
@@ -32,7 +32,7 @@ class ProductsController extends Controller
         
     }
 
-    public function RemoveAllItem(Request $request, $id){
+    public function removeAllItem(Request $request, $id){
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
@@ -141,7 +141,7 @@ class ProductsController extends Controller
             'price' => 'required|integer',
             'image_url' => 'nullable|string'
         ]);
-        
+
         $products::findOrFail($id);
         $product_all = $request->all();
         $product->fill($product_all)->update();
