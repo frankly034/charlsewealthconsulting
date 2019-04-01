@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use Cloudder;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -40,13 +41,21 @@ class ServiceController extends Controller
     {
         $this->validate([
             'service_name' => 'required|string',
+            'image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'description' => 'nullable|string',
             'image_url' => 'nullable|string'
         ]);
+        $image = $request->file('image')->getRealPath();
+
+        Cloudder::upload($image, null);
+
+        $image_url = Cloudder::show(Cloudder::getPublicId());
+
+
         $service = new Service;
         $service->service_name = $request->service_name;
         $service->description = $request->description;
-        $service->image_url = $request->image_url;
+        $service->image_url = $image_url;
         $service->save();
         return $service;
 
@@ -89,12 +98,19 @@ class ServiceController extends Controller
         $this->validate([
             'service_name' => 'required|string',
             'description' => 'nullable|string',
+            'image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'image_url' => 'nullable|string'
         ]);
+
+        $image = $request->file('image')->getRealPath();
+
+        Cloudder::upload($image, null);
+
+        $image_url = Cloudder::show(Cloudder::getPublicId());
         
         $service = Service::findOrFail($id);
         $service->description = $request->description;
-        $service->image_url = $request->image_url;
+        $service->image_url = $image_url;
         $service->service_name = $request->service_name;
         $service->update();
         return $service;

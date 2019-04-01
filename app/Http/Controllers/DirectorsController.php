@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Directors;
+use Cloudder;
 use Illuminate\Http\Request;
 
 class DirectorsController extends Controller
@@ -40,17 +41,24 @@ class DirectorsController extends Controller
             'name' => 'required|string',
             'description' => 'required',
             'specialisation' =>'nullable',
-            'image_url' => 'nullable',
+            'image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'twitter' => 'nullable',
             'facebook' => 'nullable',
             'intagram' => 'nullable'
         ]);
 
+        $image = $request->file('image')->getRealPath();
+
+        Cloudder::upload($image, null);
+
+        $image_url = Cloudder::show(Cloudder::getPublicId());
+
+
         $director = new Directors();
         $director->name = $request->name;
         $director->description = $request->description;
         $director->specialisation = $request->specialisation;
-        $director->image_url = " ";
+        $director->image_url = $image_url;
         $director->twitter = $request->twitter;
         $director->facebook = $request->facebook;
         $director->instagram = $request->instagram;
@@ -97,17 +105,30 @@ class DirectorsController extends Controller
             'name' => 'required|string',
             'description' => 'required',
             'specialisation' =>'nullable',
-            'image_url' => 'nullable',
+            'image' => 'mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'twitter' => 'nullable',
             'facebook' => 'nullable',
             'intagram' => 'nullable'
         ]);
+        if($request->hasFile('image')){
+            $image = $request->file('image')->getRealPath();
+
+            Cloudder::upload($image, null);
+
+            $image_url = Cloudder::show(Cloudder::getPublicId());
+        }   
+        
 
         $director = Directors::findOrFail($id);
         $director->name = $request->name;
         $director->description = $request->description;
         $director->specialisation = $request->specialisation;
-        $director->image_url = " ";
+        if($request->hasFile('image')){
+            $publicId = $director->image_url;
+            Cloudder::destroyImage($publicId);
+            $director->image_url = $image_url;
+        }
+        
         $director->twitter = $request->twitter;
         $director->facebook = $request->facebook;
         $director->instagram = $request->instagram;
@@ -126,6 +147,10 @@ class DirectorsController extends Controller
     public function destroy($id)
     {
         $director = Directors::findOrFail($id);
+        $publicId = $director->image_url;
+        Cloudder::destroyImage($publicId);
+        
+
         $director->delete();
         return $director;
 
