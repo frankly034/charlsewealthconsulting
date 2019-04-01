@@ -5,6 +5,8 @@ use App\http\Requests;
 use Illuminate\Http\Request;
 use App\Service;
 use Mail;
+use Notification;
+use App\Notifications\MailSent;
 
 
 class ContactsController extends Controller
@@ -41,5 +43,8 @@ class ContactsController extends Controller
             $message->to('solomoreal@yahoo.com');
             $message->subject($data['subject']);
         });
+
+        Notification::route('mail', $request->email)
+            ->notify(new MailSent());
     }
 }
