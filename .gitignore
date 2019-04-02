@@ -1,1 +1,4 @@
-charlsewealthconsulting/
+vendor/
+.env
+storage/
+bootstrap/
