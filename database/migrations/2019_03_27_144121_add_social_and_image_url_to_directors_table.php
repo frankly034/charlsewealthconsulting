@@ -14,10 +14,10 @@ class AddSocialAndImageUrlToDirectorsTable extends Migration
     public function up()
     {
         Schema::table('directors', function (Blueprint $table) {
-            $table->string('image_url');
-            $table->string('twitter');
-            $table->string('facebook');
-            $table->string('instagram');
+            $table->string('image_url')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
         });
     }
 

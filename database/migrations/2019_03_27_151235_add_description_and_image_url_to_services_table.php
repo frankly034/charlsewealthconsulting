@@ -14,8 +14,8 @@ class AddDescriptionAndImageUrlToServicesTable extends Migration
     public function up()
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->text('description');
-            $table->string('image_url');
+            $table->text('description')->nullable();
+            $table->string('image_url')->nullable();
         });
     }
 

@@ -37,7 +37,7 @@ class DirectorsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate([
+        $this->validate($request,[
             'name' => 'required|string',
             'description' => 'required',
             'specialisation' =>'nullable',
@@ -101,15 +101,18 @@ class DirectorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate([
+        dd($request->all());
+        
+        $this->validate($request,[
             'name' => 'required|string',
-            'description' => 'required',
+            'description' => 'nullable',
             'specialisation' =>'nullable',
             'image' => 'mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'twitter' => 'nullable',
             'facebook' => 'nullable',
-            'intagram' => 'nullable'
+            'instagram' => 'nullable'
         ]);
+        
         if($request->hasFile('image')){
             $image = $request->file('image')->getRealPath();
 
@@ -120,11 +123,16 @@ class DirectorsController extends Controller
         
 
         $director = Directors::findOrFail($id);
+        
         $director->name = $request->name;
         $director->description = $request->description;
         $director->specialisation = $request->specialisation;
         if($request->hasFile('image')){
-            $publicId = $director->image_url;
+            $url_Id = $director->image_url;
+            $url_arr = explode("/",$url_id);
+            $url_last = count($url_arr)-1;
+            $url_last_id = explode(".", $url_arr[$url_last]);
+            $publicId = $url_last_id[0];
             Cloudder::destroyImage($publicId);
             $director->image_url = $image_url;
         }
@@ -147,10 +155,12 @@ class DirectorsController extends Controller
     public function destroy($id)
     {
         $director = Directors::findOrFail($id);
-        $publicId = $director->image_url;
-        Cloudder::destroyImage($publicId);
-        
-
+            $url_id = $director->image_url;
+            $url_arr = explode("/",$url_id);
+            $url_last = count($url_arr)-1;
+            $url_last_id = explode(".", $url_arr[$url_last]);
+            $publicId = $url_last_id[0];
+            Cloudder::destroyImage($publicId);
         $director->delete();
         return $director;
 

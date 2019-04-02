@@ -5,6 +5,7 @@ use App\Cart;
 use App\Products;
 use Illuminate\Http\Request;
 use Session;
+use Cloudder;
 use App\http\Requests;
 
 class ProductsController extends Controller
@@ -75,18 +76,26 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate([
+        $this->validate($request,[
             'product_name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|integer',
             'image_url' => 'nullable|string'
         ]);
 
+        if($request->hasFile('image')){
+            $image = $request->file('image')->getRealPath();
+
+            Cloudder::upload($image, null);
+
+            $image_url = Cloudder::show(Cloudder::getPublicId());
+        }
+
         $product = new Products([
             'product_name' => $request->product_name,
             'description' => $request->description,
             'price' => $request->price,
-            'image_url' => $request->image_url
+            'image_url' => $image_url
         ]);
         $product->save();
         return $product;
@@ -100,7 +109,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product::findOrFail($id);
+        $product = Products::findOrFail($id);
         return $product; 
     }
 
@@ -112,7 +121,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product::findOrFail($id);
+        $product = Products::findOrFail($id);
         return $product;
     }
 
@@ -125,17 +134,34 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate([
+        $this->validate($request,[
             'product_name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|integer',
-            'image_url' => 'nullable|string'
+            'image' => 'nullable|string'
         ]);
 
-        $products::findOrFail($id);
+        if($request->hasFile('image')){
+            $image = $request->file('image')->getRealPath();
+
+            Cloudder::upload($image, null);
+
+            $image_url = Cloudder::show(Cloudder::getPublicId());
+        }
+        
+        $products = Products::findOrFail($id);
+        if($request->hasFile('image')){
+            $url_Id = $products->image_url;
+            $url_arr = explode("/",$url_id);
+            $url_last = count($url_arr)-1;
+            $url_last_id = explode(".", $url_arr[$url_last]);
+            $publicId = $url_last_id[0];
+            Cloudder::destroyImage($publicId);
+            $products->image_url = $image_url;
+        }
         $product_all = $request->all();
-        $product->fill($product_all)->update();
-        return $product;
+        $products->fill($product_all)->update();
+        return $products;
         
     }
 
@@ -145,12 +171,17 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy($id)
     {
-        $products::findOrFail($id);
-
-        $product->delete();
-        return $product;
+        $products = Products::findOrFail($id);
+        $url_id = $products->image_url;
+        $url_arr = explode("/",$url_id);
+        $url_last = count($url_arr)-1;
+        $url_last_id = explode(".", $url_arr[$url_last]);
+        $publicId = $url_last_id[0];
+        Cloudder::destroyImage($publicId);
+        $products->delete();
+        return $products;
         
     }
 
