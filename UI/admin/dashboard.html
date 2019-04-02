@@ -5,71 +5,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>CharlseWealth Company | dashboard</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Dashboard Layout</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/cw-admin-dashboard.css">
   <link rel="stylesheet" href="css/cw-admin.css">
-
 </head>
 
-<body class=''>
-  <div class='flex-col wrapper'>
-    <header class='flex-row-sm top-nav bg-dark-theme'>
-      <h1 class='flex-2 font-md'><a href="../index.html" class='light'>CharlseWealth Company</a></a></h1>
-      <span class="font-300 flex-1 text-right pr-2 mr-5 mt-1">Admin</span>
+<body>
+  <div class="grid-container">
+    <div class="menu-icon">
+      <i class="fas fa-bars header__menu"></i>
+    </div>
+
+    <header class="header">
+      <div class="header__search">Charles Wealth Company</div>
+      <div class="header__avatar"><i class="fa fa-user"></i></div>
     </header>
 
-    <main class='flex-1 mt-6'>
-      <div class='flex-row'>
-        <section class='px-3 py-3 ml-2 border-primary-r-lg-1 flex-1 mt-0'>
-          <nav class=''>
-            <button class='button mb-2 toggler' data-toggle='#mynav'>
-              Menu
-            </button>
-            <ul class='nav nav-stack' id='mynav'>
-              <li><a href="#">Events</a></li>
-              <li><a href="#">Directors</a></li>
-              <li><a href="#">Store</a></li>
-              <li><a href="#">Logout</a></li>
-            </ul>
-          </nav>
-        </section>
+    <aside class="sidenav bg-dark-sidenav-theme">
+      <div class="sidenav__close-icon">
+        <i class="fas fa-times sidenav__brand-close"></i>
+      </div>
+      <ul class="sidenav__list">
+        <li class="sidenav__list-item">Events</li>
+        <li class="sidenav__list-item">Gallery</li>
+        <li class="sidenav__list-item">Director</li>
+        <li class="sidenav__list-item">Store</li>
+        <li class="sidenav__list-item">Logout</li>
+      </ul>
+    </aside>
 
-        <section class='px-3 py-3 flex-4 '>
-          <section class='ml-4 flex-row'>
-            <div class='tab'>
-              <header class=''>
-                <ul class='nav'>
-                  <li><a href="#">Events</a></li>
-                  <li><a href="#">Gallery</a></li>
-                  <li><a href="#">Directors</a></li>
-                </ul>
-              </header>
-              <section>
-                <div class="tab" id="events">
-                  <h2>Events</h2>
-                </div>
-                <div class="tab" id="gallery">
-                  <h2>Gallery</h2>
-                </div>
-                <div class="tab" id="director">
-                  <h2>Directors</h2>
-                </div>
-              </section>
-            </div>
+    <main class="main">
+      <div class="main-header">
+        <div class="main-header__heading font-lg">Admin Dashboard</div>
+        <div class="main-header__updates">Recent Items</div>
+      </div>
 
-          </section>
-        </section>
+      <div class="main-overview">
+        <div class="overviewcard">
+          <div class="overviewcard__icon font-md">Events</div>
+          <div class="overviewcard__info">Card</div>
+        </div>
+        <div class="overviewcard">
+          <div class="overviewcard__icon font-md">Gallary</div>
+          <div class="overviewcard__info">Card</div>
+        </div>
+        <div class="overviewcard">
+          <div class="overviewcard__icon font-md">Products</div>
+          <div class="overviewcard__info">Card</div>
+        </div>
+      </div>
+
+      <div class="main-cards">
       </div>
     </main>
 
-
-    <footer class='bg-dark-theme py-3'>
-      <p class='text-center'>Charles Wealth Company &copy; 2019. BitHub</p>
+    <footer class="footer bg-dark-theme">
+      <div class="footer__copyright">&copy; 2019 BitHubPH</div>
+      <div class="footer__signature">Charles Wealth Company</div>
     </footer>
   </div>
-
-  <script src="../js/lib2.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="js/demo.js"></script>
 </body>
 
 </html>

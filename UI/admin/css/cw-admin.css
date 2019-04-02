@@ -334,6 +334,10 @@ html, body, .wrapper {
 }
 
 /* --- background themes --- */
+.bg-dark-sidenav-theme {
+  background-color: rgba(53, 51, 51, 0.85);
+  color: #ECF0F1;
+}
 
 .bg-light-theme {    
   background-color: #ECF0F1;
