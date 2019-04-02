@@ -108,7 +108,7 @@ html, body, .wrapper {
 }
 
 .border-primary-l-1 {
-  border-left: #3498DB solid 1px;
+  border-left: #C77100 solid 1px;
 }
 
 .d-block {
@@ -334,6 +334,10 @@ html, body, .wrapper {
 }
 
 /* --- background themes --- */
+.bg-dark-sidenav-theme {
+  background-color: rgba(53, 51, 51, 0.85);
+  color: #ECF0F1;
+}
 
 .bg-light-theme {    
   background-color: #ECF0F1;
@@ -553,6 +557,14 @@ a {
   transition-duration: 1s;
   transition-delay: 0.5s;
   transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.tab .nav {
+  list-style-type: none; 
+  display: inline-block;
+  display:flex;
+  flex-direction: row;
+  justify-items: space-between;
 }
 
 .bg-dark-theme  a {
