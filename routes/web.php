@@ -35,3 +35,4 @@ Route::resource('/events', 'EventController');
 Route::resource('/gallery', 'ImageGalleryController');
 
 Route::resource('/speakers', 'SpeakerController');
+Route::post('/contact', 'ContactsController@postContact');
