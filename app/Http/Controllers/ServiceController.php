@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use Cloudder;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -38,15 +39,23 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate([
+        $this->validate($request,[
             'service_name' => 'required|string',
+            'image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             'description' => 'nullable|string',
             'image_url' => 'nullable|string'
         ]);
+        $image = $request->file('image')->getRealPath();
+
+        Cloudder::upload($image, null);
+
+        $image_url = Cloudder::show(Cloudder::getPublicId());
+
+
         $service = new Service;
         $service->service_name = $request->service_name;
         $service->description = $request->description;
-        $service->image_url = $request->image_url;
+        $service->image_url = $image_url;
         $service->save();
         return $service;
 
@@ -86,15 +95,30 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate([
+        $this->validate($request,[
             'service_name' => 'required|string',
             'description' => 'nullable|string',
-            'image_url' => 'nullable|string'
+            'image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
+        if($request->hasFile('image')){
+        $image = $request->file('image')->getRealPath();
+
+        Cloudder::upload($image, null);
+
+        $image_url = Cloudder::show(Cloudder::getPublicId());
+        }
         
         $service = Service::findOrFail($id);
         $service->description = $request->description;
-        $service->image_url = $request->image_url;
+        if($request->hasFile('image')){
+            $url_id = $service->image_url;
+            $url_arr = explode("/",$url_id);
+            $url_last = count($url_arr)-1;
+            $url_last_id = explode(".", $url_arr[$url_last]);
+            $publicId = $url_last_id[0];
+            Cloudder::destroyImage($publicId);
+            $service->image_url = $image_url;
+        }
         $service->service_name = $request->service_name;
         $service->update();
         return $service;
@@ -109,7 +133,13 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::fiindOrFail($id);
+        $service = Service::findOrFail($id);
+        $url_id = $service->image_url;
+        $url_arr = explode("/",$url_id);
+        $url_last = count($url_arr)-1;
+        $url_last_id = explode(".", $url_arr[$url_last]);
+        $publicId = $url_last_id[0];
+        Cloudder::destroyImage($publicId);
         $service->delete();
         return $service;
     }
