@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//product & shopping cart Routes--------------------------------------------------------------------
 Route::resource('/products', 'ProductsController');
 
 Route::group(['prefix' => '/cart'], function () {
@@ -25,6 +25,12 @@ Route::group(['prefix' => '/cart'], function () {
     Route::get('/{id}/remove', 'ProductsController@removeItem')->name('product.removeItem');
 
 });
+//-----------------------------------------------------------------------------------------------------
+
+//paystack Routes------------------------------------------------------------
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay'); 
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+//----------------------------------------------------------------------------
 
 Route::resource('/services', 'ServiceController');
 

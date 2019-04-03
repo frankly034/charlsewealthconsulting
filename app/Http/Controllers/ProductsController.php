@@ -44,8 +44,15 @@ class ProductsController extends Controller
    }
 
     public function getCart(Request $request){
-        $cart = $request->session()->has('cart') ? $request->session()->get('cart') : new Cart();
-        return $cart;
+        if(!Session::has('cart')){
+            return view('products.test_cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $product = $cart->items;
+        $totalPrice = $cart->totalPrice;
+        $totalQty = $cart->totalQty;
+        return view('products.test_cart', compact('product','totalPrice','totalQty'));
     }
     /**
      * Display a listing of the resource.
