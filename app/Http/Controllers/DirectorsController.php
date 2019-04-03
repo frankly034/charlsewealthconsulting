@@ -128,7 +128,7 @@ class DirectorsController extends Controller
         $director->description = $request->description;
         $director->specialisation = $request->specialisation;
         if($request->hasFile('image')){
-            $url_Id = $director->image_url;
+            $url_id = $director->image_url;
             $url_arr = explode("/",$url_id);
             $url_last = count($url_arr)-1;
             $url_last_id = explode(".", $url_arr[$url_last]);

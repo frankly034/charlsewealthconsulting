@@ -98,8 +98,7 @@ class ServiceController extends Controller
         $this->validate($request,[
             'service_name' => 'required|string',
             'description' => 'nullable|string',
-            'image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
-            'image_url' => 'nullable|string'
+            'image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
         if($request->hasFile('image')){
         $image = $request->file('image')->getRealPath();
@@ -112,7 +111,7 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $service->description = $request->description;
         if($request->hasFile('image')){
-            $url_Id = $service->image_url;
+            $url_id = $service->image_url;
             $url_arr = explode("/",$url_id);
             $url_last = count($url_arr)-1;
             $url_last_id = explode(".", $url_arr[$url_last]);
@@ -134,7 +133,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::fiindOrFail($id);
+        $service = Service::findOrFail($id);
         $url_id = $service->image_url;
         $url_arr = explode("/",$url_id);
         $url_last = count($url_arr)-1;

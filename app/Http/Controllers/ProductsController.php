@@ -76,11 +76,13 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request,[
             'product_name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|integer',
-            'image_url' => 'nullable|string'
+            'image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
+
         ]);
 
         if($request->hasFile('image')){
@@ -151,7 +153,7 @@ class ProductsController extends Controller
         
         $products = Products::findOrFail($id);
         if($request->hasFile('image')){
-            $url_Id = $products->image_url;
+            $url_id = $products->image_url;
             $url_arr = explode("/",$url_id);
             $url_last = count($url_arr)-1;
             $url_last_id = explode(".", $url_arr[$url_last]);
