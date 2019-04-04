@@ -8,7 +8,7 @@
 </head>
 <body>
 @if(Session::has('cart'))    
-<h4>total Price: {{$totalPrice}}</h4>
+<h4>total Price:₦ {{$totalPrice}}</h4>
 @foreach ($product as $products)
 <div>
 <h4>product name: {{$products['item']['product_name']}}</h4>
@@ -25,12 +25,13 @@
       <div class="col-md-8 col-md-offset-2">
         <p>
             <div>
-                Lagos Eyo Print Tee Shirt
+                @foreach ($product as $item)
+                {{$item['item']['product_name']}}, {{" "}}
+                @endforeach
                 ₦ {{$totalPrice}}
             </div>
         </p>
         <input type="email" name="email" value="" placeholder="please enter your email"> {{-- required --}}
-        <input type="hidden" name="orderID" value="345">
     <input type="hidden" name="amount" value="{{$totalPrice * 100}}"> {{-- required in kobo --}}
     <input type="hidden" name="quantity" value="{{$totalQty}}">
     <input type="text" name="country" placeholder="please enter your country of residence">

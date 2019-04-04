@@ -44,6 +44,7 @@ class ProductsController extends Controller
    }
 
     public function getCart(Request $request){
+        dd(request()->session()->get('cart'));
         if(!Session::has('cart')){
             return view('products.test_cart');
         }

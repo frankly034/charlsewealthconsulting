@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Paystack;
 use Session;
+use App\Transaction;
+use App\Cart;
 
 class PaymentController extends Controller
 {
@@ -31,11 +33,28 @@ class PaymentController extends Controller
     {
      
         $paymentDetails = Paystack::getPaymentData();
-        
-        //return Session::forget('cart');
 
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $order = new Transaction();
+        dd(Session::all());
 
-        dd($paymentDetails);
+        //dd($paymentDetails);
+        $order->reference_id = $paymentDetails['data']['reference'];
+        $order->amount = $paymentDetails['data']['amount'];
+        $order->state = $paymentDetails['data']['metadata']['state'];
+        $order->address = $paymentDetails['data']['metadata']['address'];
+        $order->fullName = $paymentDetails['data']['metadata']['fullName'];
+        $order->email = $paymentDetails['data']['metadata']['email'];
+        $order->paid_at = $paymentDetails['data']['paidAt'];
+        $order->currency = $paymentDetails['data']['currency'];
+        $order->cart = serialize($cart);
+        $order->save();
+        request()->session()->forget('cart');
+        return $order;
+
+        //return $paymentDetails;
+        dd($paymentDetails['data']);
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
