@@ -1,0 +1,97 @@
+:root {
+    /* Navigation Variables */
+    --content-width: 1000px;
+    --nav-height: 100px;
+    --nav-background: #353333;
+    --nav-font-color: #e3e3d3;
+    --link-hover-color: #2581dc;
+    --button-color: #C77100;
+    --button-hover: #d15107;
+    --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.50);
+    --box-shadow2: 20px 20px 90px rgba(212, 211, 211, 0.5);
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+.btn-mobile {
+    display: none;
+}
+.btn-mobile div{
+    height: 3px;
+    width: 30px;
+    background: #fff;
+    margin: 5px;
+}
+
+.showCase {
+    height: 50vh;
+    background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.5)), url(https://images.unsplash.com/photo-1431538510849-b719825bf08b?q=80&fm=jpg&s=6fd7a983e3b43e66d2b6062856b9df66);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    overflow: hidden;
+    font-size: 1rem;
+}
+.showCase h1 {
+    font-size: 2em;
+}
+
+/* Contact us*/
+.showAbout {
+    height: 80vh;
+    background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.5)), url(https://images.unsplash.com/photo-1431538510849-b719825bf08b?q=80&fm=jpg&s=6fd7a983e3b43e66d2b6062856b9df66);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    overflow: hidden;
+    font-size: 1rem;
+}
+.showAbout h1 {
+    font-size: 2em;
+}
+
+@media screen and (max-width:768px){
+    body{
+        overflow: hidden;
+    }
+    .nav-list {
+        position: absolute;
+        height: 92vh;
+        right: 0px;
+        top: 7vh;
+        background: var(--nav-background);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform:  translate(100%);
+        transition: transform 0.5s ease-in;
+        opacity: 0.8;
+    }
+    .nav-link {
+        opacity: 1;
+    }
+    .btn-mobile {
+        display: block;
+        cursor: pointer;
+    }
+
+}
+.nav-active {
+    transform: translate(0%);
+}

@@ -1,0 +1,45 @@
+feat(All Files): all about the main-landing-page
+
+-[Delivers #90304342]
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch ft-main-landing-page-164859114
+# Changes to be committed:
+#	new file:   about.html
+#	new file:   css/shop.css
+#	modified:   css/style.css
+#	new file:   favicon.ico
+#	new file:   gallery.html
+#	new file:   img/4reason/image2.jpg
+#	new file:   img/4reason/image3.jpg
+#	new file:   img/4reason/image4.jpg
+#	new file:   img/VALUE.jpg
+#	new file:   img/about.jpg
+#	new file:   img/body.jpg
+#	new file:   img/design-details-thumb_1536x1536.jpg-
+#	new file:   img/event/img1.jfif
+#	new file:   img/event/img1.jpg
+#	new file:   img/event/img2.jfif
+#	new file:   img/event/img3.jfif
+#	new file:   img/logo/logo.jpeg
+#	new file:   img/logo/logo.png
+#	new file:   img/logo/logo2.jpeg
+#	new file:   img/pics1.jpeg
+#	new file:   img/pics2.jpeg
+#	new file:   img/pics3.jpeg
+#	new file:   img/shop/1.png
+#	new file:   img/shop/booksmall.jpg
+#	new file:   img/shop/effcommsmall.jpg
+#	new file:   img/shop/high-performance-selling-small.jpg
+#	new file:   img/shop/image_small.jpg
+#	new file:   img/shop/small.jpg
+#	new file:   img/shop/the-miracle-of-self-discipline-package-140.jpg
+#	new file:   img/shop/writing-and-publishing-starter-kit-small.jpg
+#	new file:   img/svg/bg.svg
+#	new file:   img/svg/bg1.svg
+#	new file:   img/svg/rightside.svg
+#	new file:   img/svg/sidebackground.svg
+#	new file:   img/team/team2.jpg
+#	modified:   js/script.js
+#	new file:   shop.html
+#
