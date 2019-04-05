@@ -55,5 +55,8 @@
     </div>
 </form>
 @endif
+<p>Your cart is Empty</p>
+<br>
+<a href="{{url('/products')}}">back</a>
 </body>
 </html>

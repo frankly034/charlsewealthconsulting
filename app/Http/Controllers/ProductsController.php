@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Session;
 use Cloudder;
 use App\http\Requests;
+use App\Http\Controllers\Controller;
+use Paystack;
+use App\Transaction;
+
+
 
 class ProductsController extends Controller
 {
@@ -38,13 +43,17 @@ class ProductsController extends Controller
         return json_encode($request->session()->get('cart'));
     }
 
-    public function emptyCart(Request $request){
-      $request->session()->forget('cart');
-      return json_encode($request->session()->get('cart'));
+    public function emptyCart(){
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        Session::forget('cart');
+        $cart = null;
+
+      return json_encode(Session::get('cart'));
    }
 
     public function getCart(Request $request){
-        dd(request()->session()->get('cart'));
+        //dd(request()->session()->get('cart'));
         if(!Session::has('cart')){
             return view('products.test_cart');
         }
@@ -54,6 +63,46 @@ class ProductsController extends Controller
         $totalPrice = $cart->totalPrice;
         $totalQty = $cart->totalQty;
         return view('products.test_cart', compact('product','totalPrice','totalQty'));
+    }
+
+    public function redirectToGateway()
+    {
+
+        request()->metadata = json_encode(request()->all());
+        return Paystack::getAuthorizationUrl()->redirectNow();
+    }
+
+    /**
+     * Obtain Paystack payment information
+     * @return void
+     */
+    public function handleGatewayCallback(Request $request)
+    {
+     
+        $paymentDetails = Paystack::getPaymentData();
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        if($paymentDetails){
+            $order = new Transaction();
+            $order->reference_id = $paymentDetails['data']['reference'];
+            $order->amount = $paymentDetails['data']['amount'];
+            $order->state = $paymentDetails['data']['metadata']['state'];
+            $order->address = $paymentDetails['data']['metadata']['address'];
+            $order->fullName = $paymentDetails['data']['metadata']['fullName'];
+            $order->email = $paymentDetails['data']['metadata']['email'];
+            $order->paid_at = $paymentDetails['data']['paidAt'];
+            $order->currency = $paymentDetails['data']['currency'];
+            $order->cart = serialize($cart);
+            $order->save();
+        }
+        $this->emptyCart();
+
+
+        //return $paymentDetails;
+        //dd($paymentDetails['data']);
+        // Now you have the payment details,
+        // you can store the authorization_code in your db to allow for recurrent subscriptions
+        // you can then redirect or do whatever you want
     }
     /**
      * Display a listing of the resource.
