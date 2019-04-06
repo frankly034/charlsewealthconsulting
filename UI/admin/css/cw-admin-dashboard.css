@@ -40,10 +40,11 @@ body {
   justify-content: space-between;
   padding: 0 16px;
   background-color: #648ca6;
-  background-color:#353333;
-  background-color: #C77100;
-  background-image:linear-gradient(to bottom right, slategray,#C77100);
-  /* color: #353333; */
+  background-color:#666262;
+  color: #f0a748;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 /* Make room for the menu icon on mobile */
@@ -79,21 +80,34 @@ body {
   font-size: 20px;
   color: #ddd;
 }
-
+#CWname {
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #c77100;
+}
 .sidenav__list {
+  font-size: 0.8rem;
   padding: 0;
-  margin-top: 85px;
+  margin-top: 20px;
   list-style-type: none;
+  text-transform: uppercase;
 }
 
 .sidenav__list-item {
   padding: 20px 20px 20px 40px;
-  color: #ddd;
 }
 
 .sidenav__list-item:hover {
   background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
+  color: #c77100;
+}
+
+.sidenav__list-item a {
+  text-decoration: none;
+  color: #ddd;
 }
 
 .main {
@@ -103,21 +117,19 @@ body {
 
 .main-header {
   display: flex;
-  justify-content: space-between;
-  margin: 20px;
+  justify-content: center;
+  margin: 40px;
   padding: 20px;
-  height: 150px;
-  background-color: #e3e4e6;
+  height: 70px;
+  background-color: #f7c482;
   color: slategray;
-  color: #fff;
-  background: linear-gradient(#e66465, #9198e5);
-  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(104, 104, 104, 0.8);
 }
 
 .main-overview {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: 94px;
   grid-gap: 20px;
   margin: 20px;
@@ -128,11 +140,10 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border: 2px solid slategray;
-  color: #c77100;
-  /* background-color: #d3d3;
-  background-image:linear-gradient(to bottom right,#02b3e4,#02ccba);
-  background-image:linear-gradient(to bottom right, slategray,#C77100); */
+  border: 1px solid #c77100;
+  color: slategray;
+  border-radius: 15px;
+  box-shadow: 0 5px 5px rgba(104, 0, 0, 0.8);
 }
 
 .main-cards {
