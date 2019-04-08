@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dashboard Layout</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/cw-admin-dashboard.css">
+  <link rel="stylesheet" href="css/cw-admin.css">
+</head>
+
+<body>
+  <div class="grid-container">
+    <div class="menu-icon">
+      <i class="fas fa-bars header__menu"></i>
+    </div>
+
+    <header class="header">
+      <div class="header__search">Charles Wealth Company</div>
+      <div class="header__avatar"><i class="fa fa-user"></i></div>
+    </header>
+
+    <aside class="sidenav bg-dark-sidenav-theme">
+      <div class="sidenav__close-icon">
+        <i class="fas fa-times sidenav__brand-close"></i>
+      </div>
+      <ul class="sidenav__list">
+        <li class="logo">
+          <h1>CW</h1>
+        </li>
+        <hr class="nav-line">
+        <li class="sidenav__list-item"><a href="dashboard.html">Dashboard</a></li>
+        <hr class="nav-line">
+        <li class="sidenav__list-item"><a href="event.html">Event</a></li>
+        <hr class="nav-line">
+        <li class="sidenav__list-item"><a href="#">Gallery</a></li>
+        <hr class="nav-line">
+        <li class="sidenav__list-item"><a href="#">Director</a></li>
+        <hr class="nav-line">
+        <li class="sidenav__list-item"><a href="#">Store</a></li>
+        <hr class="nav-line">
+        <li class="sidenav__list-item"><a href="#">Logout</a></li>
+        <hr class="nav-line">
+        <hr class="nav-line">
+      </ul>
+    </aside>
+
+    <main class="main">
+      <div id="main-header"></div>
+
+      <section class="container Team">
+        <h3 class="eventTitle"></i>Speakers</h3>
+        <div class="row Team justify-content-center">
+          <div class="col-lg-4">
+            <div id="card">
+              <img src="image/team/team2.jpg" alt="john">
+              <form id="formedit">
+                <label>Name:</label> <input type="text" value="John Doe"><br>
+                <label>Email:</label> <input type="text" value="Johnkay@gmail.com"><br>
+                <label>Phone:</label><input type="text" value="090636373882"> 
+              </form>
+              <p><button class="btn-update">update</button></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+      <div class="main-cards">
+      </div>
+    </main>
+
+    <footer class="footer bg-dark-theme">
+      <div class="footer__copyright">&copy; 2019 BitHubPH</div>
+      <div class="footer__signature"><h3>Charles Wealth Company</h3></div>
+    </footer>
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="js/demo.js"></script>
+</body>
+
+</html>
