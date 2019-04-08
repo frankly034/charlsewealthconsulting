@@ -30,6 +30,15 @@ Route::group(['prefix' => '/cart'], function () {
 });
 //-----------------------------------------------------------------------------------------------------------
 
+//-------------------Route for handling orders-------- TransactionsController------------------------------
+Route::group(['prefix' => '/order'], function () {
+    Route::get('/index', 'TransactionsController@index')->name('transaction.index');
+    Route::get('/show', 'TransactionsController@show')->name('transaction.show');
+    Route::get('/edit_status', 'TransactionsController@editStatus')->name('transaction.editStatus');
+    Route::put('/change_status', 'TransactionsController@changeStatus')->name('transaction.changeStatus');
+    });
+//-----------------------------------------------------------------------------------------------------------
+
 //paystack Routes From Prosper------------------------------------------------
 //Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay'); 
 //Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');

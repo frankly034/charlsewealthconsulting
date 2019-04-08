@@ -15,7 +15,7 @@ use App\Transaction;
 
 class ProductsController extends Controller
 {
-    //this handles adding iteems to the shopping cart
+    //this handles adding items to the shopping cart
     public function addToCart(Request $request, $id){
         $product = Products::findOrFail($id);
         $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
@@ -64,7 +64,12 @@ class ProductsController extends Controller
         $totalQty = $cart->totalQty;
         return view('products.test_cart', compact('product','totalPrice','totalQty'));
     }
+    /**
+     * From paystack
+     * 
+     */
 
+     
     public function redirectToGateway()
     {
 
@@ -93,6 +98,7 @@ class ProductsController extends Controller
             $order->paid_at = $paymentDetails['data']['paidAt'];
             $order->currency = $paymentDetails['data']['currency'];
             $order->cart = serialize($cart);
+            $order->status = "Pending";
             $order->save();
         }
         $this->emptyCart();
