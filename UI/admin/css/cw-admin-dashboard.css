@@ -39,7 +39,6 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  background-color: #648ca6;
   background-color:#353333;
   color: #C77100;
   text-transform: uppercase;
@@ -123,7 +122,6 @@ body {
 
 .main {
   grid-area: main;
-  background-color: #c2d7f3;
 }
 
 .main-header {
@@ -214,7 +212,7 @@ body {
   margin: 2rem;
 }
 table {
-  border: 2px solid #ccc;
+  text-align: center;
   border-collapse: collapse;
   margin: 0;
   padding: 0;
@@ -228,7 +226,7 @@ table caption {
 }
 
 table tr {
-  background-color: #020c1a;
+  background-color: #ccc;
   border: 1px solid #ddd;
   padding: .35em;
 }
@@ -236,54 +234,45 @@ table tr {
 table th,
 table td {
   padding: .625em;
-  text-align: center;
 }
 
 table th {
   font-size: 1rem;
   letter-spacing: .1em;
   text-transform: uppercase;
-  background-color: #d6c4b1;
-  color: #000;
+  background-color:#353333;
+  color: #fff;
 }
 
 .btn-event {
   padding: 6px;
-  background: #04295a;
+  background: #ecac6b;
   border-radius: 3px;
   color: #fff;
   font-size: 0.8rem;
+  display: inline-block;
 }
 .btn-event:hover {
   padding: 6px;
-  background: #14509e;
+  background: #eec8a2;
   border-radius: 3px;
   color: #000;
-  border: solid 1px #fff;
 }
 .btn-event a{
   text-decoration: none;
 }
 
-.btn-speaker {
-  padding: 6px;
-  background: #04295a;
-  border-radius: 3px;
-  color: #fff;
-  font-size: 0.8rem;
-}
-.btn-speaker:hover {
-  padding: 6px;
-  background: #14509e;
-  border-radius: 3px;
-  color: #000;
-  border: solid 1px #fff;
-}
-.btn-speaker a{
-  text-decoration: none;
+@media only screen and (max-width: 768px) {
+  .md-hidden {
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 600px) {
+.md-hidden{
+  display: block;
+}
 
   table {
     border: 0;
@@ -329,6 +318,7 @@ table th {
     border-bottom: 0;
   }
 }
+
 
 /* Non-mobile styles, 750px breakpoint */
 @media only screen and (min-width: 46.875em) {
