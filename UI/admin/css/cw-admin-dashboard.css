@@ -232,6 +232,9 @@ body {
 .bottom-form textarea {
   height: 120px;
 }
+button {
+  border: none;
+}
  
 .btn {
   background: #4ca1af;
@@ -243,6 +246,20 @@ body {
   text-transform: uppercase;
   letter-spacing: 5px;
   cursor: pointer;
+}
+.btn-file {
+  background: #4ca1af;
+  width: 200px;
+  border-radius: 2px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 7px;
+  margin: 10px 0;
+}
+input[type="file"] {
+  background: #4ca1af;
 }
  
 ::-webkit-input-placeholder {
@@ -278,6 +295,12 @@ body {
   .form textarea {
      width: 100%;
      box-sizing: border-box;
+  }
+  .btn {
+    width: 100%;
+  }
+  .btn-file {
+    width: 96%;
   }
 }
 
