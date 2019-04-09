@@ -14,8 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//product & shopping cart Routes----------------------------And Paystack Route----------------------------
+//--------------------------------------------------------------------------------------------------------
 Route::resource('/products', 'ProductsController');
+Route::post('/pay', 'ProductsController@redirectToGateway')->name('pay'); 
+Route::get('/payment/callback', 'ProductsController@handleGatewayCallback');
 
 Route::group(['prefix' => '/cart'], function () {
     Route::get('/{id}/add', 'ProductsController@addToCart')->name('product.addToCart');
@@ -25,6 +28,21 @@ Route::group(['prefix' => '/cart'], function () {
     Route::get('/{id}/remove', 'ProductsController@removeItem')->name('product.removeItem');
 
 });
+//-----------------------------------------------------------------------------------------------------------
+
+//-------------------Route for handling orders-------- TransactionsController------------------------------
+Route::group(['prefix' => '/order'], function () {
+    Route::get('/index', 'TransactionsController@index')->name('transaction.index');
+    Route::get('/show', 'TransactionsController@show')->name('transaction.show');
+    Route::get('/edit_status', 'TransactionsController@editStatus')->name('transaction.editStatus');
+    Route::put('/change_status', 'TransactionsController@changeStatus')->name('transaction.changeStatus');
+    });
+//-----------------------------------------------------------------------------------------------------------
+
+//paystack Routes From Prosper------------------------------------------------
+//Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay'); 
+//Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+//----------------------------------------------------------------------------
 
 Route::resource('/services', 'ServiceController');
 

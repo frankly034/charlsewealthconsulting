@@ -165,7 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
+        JD\Cloudder\CloudderServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -175,7 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        JD\Cloudder\CloudderServiceProvider::class,
+        
 
     ],
 
@@ -228,6 +229,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
+        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+
 
     ],
 
