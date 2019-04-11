@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
+
 /*    VARIABLES  
 ============================*/
 :root {
@@ -7,7 +9,7 @@
     --nav-background: #353333;
     --nav-font-color: #e3e3d3;
     --link-hover-color: #2581dc;
-    --button-color: #C77100;
+    --button-color: #d8bd63;
     --button-hover: #d15107;
     --box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
     --primary-color: #fff;
@@ -15,7 +17,6 @@
 
 html {
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
     color: var(--primary-color);
 }
 .fab {
@@ -30,6 +31,8 @@ html {
 }
 
 body {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0px;
     padding: 0px;
     line-height: 1.4em;
@@ -48,8 +51,8 @@ body {
     box-shadow: var(--box-shadow);
     transition: all 500ms ease-in-out;
     text-decoration: none;
-    color: var(--nav-font-color);
-    background: var(--button-hover);
+    color: #000;
+    background: var(--button-color);
 }
 
 img {
@@ -60,35 +63,40 @@ img {
   font-size: 1.5rem;
   text-align: center;
   font-weight: bold;
-  margin-top: 8rem;
   padding-bottom: 3rem;
+}
+
+.container-fluid .text-body {
+  line-height: 2;
+  text-align: center;
+  font-size: 1.2rem;
 }
 .container h3 {
   font-size: 1.5rem;
   text-align: center;
   font-weight: bold;
-  margin-top: 8rem;
   padding-bottom: 3rem;
 }
 
+
+
 /*  Navigation Styling*/
+
+header img, footer span img{
+  width: 4rem;
+  height: 4rem;
+  padding: 10px;
+}
 header {
     position: absolute;
     top: 0;
     left: 0;
     padding: 0 100px;
-    background: var(--nav-background);
+    background: rgba(0, 0, 0, .8);
     width: 100%;
     box-sizing: border-box;
     text-transform: uppercase;
     font-size: 0.9rem;
-}
-header .brand h1{
-    color: #ff5100;
-    font-size: 24px;
-    float: left;
-    font-weight: bold;
-    line-height: 40px;
 }
 header nav {
     float: right;
@@ -99,6 +107,7 @@ header nav ul {
     display: flex;
 }
 header nav ul li {
+  padding-top: 10px;
     list-style: none;
     position: relative;
 }
@@ -106,7 +115,7 @@ header nav ul li {
 header nav ul li ul {
     position: absolute;
     left: 0;
-    background: var(--nav-background);
+    background: rgba(0, 0, 0, .8);
     display: none;
 }
 header nav ul li:hover ul {
@@ -127,7 +136,7 @@ header nav ul li a{
 header nav ul li a:hover,
 header nav ul li a.active{
     color: #fff;
-    background: var(--button-color);
+    background: rgba(0, 0, 0, .8);
     text-decoration: none;
 }
 header nav ul li a .active:active {
@@ -150,37 +159,70 @@ header nav ul li a:active{
 /* Slider Area */
 
 #showCase {
-    height: 85vh;
-    background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.5)), url(https://images.unsplash.com/photo-1431538510849-b719825bf08b?q=80&fm=jpg&s=6fd7a983e3b43e66d2b6062856b9df66);
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-    color: #fff;
-    overflow: hidden;
+  height: 85vh;
+  background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.9)), url(../img/cover.jpg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+  margin: 0 auto;
+  color: #fff;
+  overflow: hidden;
 }
-#showCase p {
-    font-size: 1.2em;
+
+.showCase-text p{
+  font-size: 1em;
+}
+.showCase-text h1 {
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 
-.main {
-    padding-top: 3rem;
+.showCase-text h1 .spacing::before{
+  display: block;
+  content: '\A';
+} 
+
+#showCase .showCase-text h1 .spacing{
+  letter-spacing: 1.75rem;
 }
+
+#showCase .showCase-text {
+  position: relative;
+  left: 45rem;
+  top: 15rem;
+}
+
+
+
 .welcome .title {
     font-weight: bold;
     color: var(--nav-background);
     font-style: uppercase;
 }
-.welcome #wel-text {
-  line-height: 1.8rem;
+
+ #wel-text p, #up-event .body-text{
+  line-height: 2;
+  margin-bottom: 2rem;
 }
-.welcome #wel-text p{
-  margin-bottom: 1.4rem;
+#up-event .text {
+  margin-bottom: 2rem;
 }
+#up-event p span {
+  font-weight: bold;
+}
+hr {
+  margin-top: 5rem;
+}
+
+#wel-text .text{
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
 
 .our-product {
     margin: ;
@@ -197,61 +239,33 @@ header nav ul li a:active{
     line-height: 0.8em;
 }
 
-.fas {
-    color: var(--button-color);
-}
-i .free {
-    text-transform: lowercase;
-    padding: 3px;
-    box-shadow: var(--box-shadow);
-}
-.event-title {
-    padding-top: 5px;
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 1.2em;
-}
-.city{
-    font-size: 1em;
-}
-.city-line{
-    background: var(--button-color);
-}
-.date{
-    font-weight: 500;
-    font-size: 1.1em;
-}
-.date .month{
-    color: var(--button-color);
-    font-size: 1.2em;
-    font-weight: bold;
-}
-.btn-event{
-    text-decoration: none;
-    padding: 3px;
-    font-size: 0.8em;
-    margin-left: 4em;
-    color: var(--nav-font-color);
-    box-shadow: var(--box-shadow);
-    background: var(--nav-background);
-}
-.textArea a:hover{
-    text-decoration: none;
-    color: #fff;
-}
-.bg-background {
-    margin-top: 5px;
-    box-shadow: var(--box-shadow);
+
+.event {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.3rem;
 }
 
-.col-lg-3 img{
-    height: 180px;
-    opacity: 0.8;
+.event-title {
+    padding-top: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5em;
 }
-.col-lg-3 img:hover {
-    transform: scale(1.2);
-    transition: all 500ms ease-in-out;
-    opacity: 1;
+
+
+
+.img-event {
+  transition: all 500ms ease-in-out;
+}
+
+.img-event:hover {
+  transition: all 500ms ease-in-out;
+  transform: scale(1);
+}
+
+.fas {
+  color: var(--button-color);
 }
 
 /*  Reason Section*/
@@ -259,7 +273,7 @@ i .free {
   margin-top: ;
 }
 #bg-img1 {
-  background-image: url(../img/body.jpg);
+  background-image: url(../img/4reason/img1.jpg);
   background-position: center;
   background-size: cover;
   height: 70vh;
@@ -272,14 +286,14 @@ i .free {
   transform: scale(0.9);
 }
 #bg-reason1 {
-  background: #460101;
+  background: linear-gradient(rgba(3, 3, 136, 0.5), rgba(141, 5, 5, 0.5));
   display: flex;
   font-size: 1.3rem;
   line-height: 2rem;
   color: #fff;
 }
 #bg-reason1 h1 {
-  color: var(--button-hover);
+  color: #000;
   font-size: 1.5rem;
 }
 #bg-reason1 p {
@@ -288,7 +302,7 @@ i .free {
 
 /*IMAGE 2*/
 #bg-img2 {
-  background-image: url(../img/4reason/image2.jpg);
+  background-image: url(../img//4reason/img2.jpg);
   background-position: center;
   background-size: cover;
   height: 70vh;
@@ -317,7 +331,7 @@ i .free {
 
 /*IMAGE 3*/
 #bg-img3 {
-  background-image: url(../img/4reason/image3.jpg);
+  background-image: url(../img/4reason/img3.jpg);
   background-position: center;
   background-size: cover;
   height: 70vh;
@@ -345,7 +359,7 @@ i .free {
 }
 /*IMAGE 4*/
 #bg-img4 {
-  background-image: url(../img/4reason/image4.jpg);
+  background-image: url(../img/4reason/img4.jpg);
   background-position: center;
   background-size: cover;
   height: 70vh;
@@ -414,7 +428,7 @@ i .free {
     text-align: center;
     text-transform: uppercase;
     font-size: 0.8rem; 
-    color: #FFF;
+    color: #fff;
     background: #3e3e3e;
     padding:10px 20px;
     background: rgba(0, 0, 0, .6);
@@ -424,17 +438,15 @@ i .free {
     width: 50vw;
     height: 50px;
     padding: 5px;
-    border: solid 2px #3e3e3e;
 }
 .subscribe form input[type="email"] {
     font-size: 1rem;
 }
-.subscribe form button{
+.subscribe button{
     height: 50px;
     text-decoration: none;
     box-shadow: var(--box-shadow);
     padding: 0.6em 1.3em;
-    color: var(--nav-font-color);
     background: var(--button-color);
     border: none;
     font-size: 1.3rem;
@@ -705,6 +717,48 @@ footer ul li a{
     color: #ada9a9;
     list-style: none;
 }
+footer ul li{
+  margin-left: 0px;
+}
+footer ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+footer h6 {
+  font-weight: bold;
+  padding-top: 2rem;
+}
+
+footer h6::after {
+  content: '';
+  display: block;
+  width: 2rem; 
+  background-color: #d15107;
+  height: 2px;
+}
+
+footer .cw-about, footer ul li {
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+footer h5 {
+  font-weight: bold;
+  border-bottom: solid 2px #d15107;
+  
+}
+
+footer .company {
+  color: #d8bd63;
+  font-size: 1.9rem;
+  text-transform: uppercase;
+}
+
+footer span img{
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
 
 
 
@@ -720,7 +774,7 @@ footer ul li a{
 
 
   
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 768px) {
     .screen-body {
       flex-direction: column;
     }
@@ -740,40 +794,129 @@ footer ul li a{
     .app-title:after {
       display: none;
     }
-  }
-  
-  @media screen and (max-width: 600px) {
-    .screen-body {
-      padding: 10px;
+
+    .bg-footer {
+      padding: 2rem;
     }
-  
-    .screen-body-item {
-      padding: 10px;
-    }
-    .subscribe form button {
-      margin-top: 0.3rem;
+    footer .cw-about, footer ul li {
       font-size: 1rem;
+      line-height: 1.8;
+    }
+    footer .company span::after, footer .company .spread::after{
+      content: '\A';
+      display: block;
+    }
+    footer .company {
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    footer span img{
+      padding: 0;
+      width: 5rem;
+      height: 5rem;
+    }
+
+    footer .company .spread {
+      letter-spacing: 1.27rem;
+      padding-left: 0.9rem;
+    }
+    
+    .background {
+      padding: 1rem;
+    }
+
+    .subscribe form button{
+      width: 70vw;
     }
     .subscribe form input {
-      width: 70vw;
-  }
-
-  .container-fluid h3 {
-    font-size: 1.5rem;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 3rem;
-    padding-bottom: 1rem;
-  }
-
-  }
-  
-
-@media (min-width: 62em) {
-    .welcome .title {
-      margin-top: 7rem;
+        width: 80vw;
     }
+
+    #bg-notice h1{
+      font-size: 1.7rem;
+    }
+    #bg-notice p{
+      font-size: 1rem;
+    }
+
+    #bg-reason1 h1, #bg-reason2 h1,  #bg-reason3 h1,  #bg-reason4 h1{
+      font-size: 1rem;
+      padding-top: 0.5rem
+    }
+    #bg-reason1 p, #bg-reason2 p, #bg-reason3 p, #bg-reason4 p{
+      font-size: 0.8rem;
+    }
+
+    .container-fluid h3 {
+      font-size: 1.2rem;
+      padding: 1.5rem 0;
+    }
+    
+    .container-fluid .text-body {
+      font-size: 1rem;
+    }
+
+    #wel-text p, #up-event .body-text{
+      margin-bottom: 1rem;
+      padding: 0 1rem;
+    }
+
+    #wel-text .title{
+      padding-left: 1rem;
+      font-size: 1.5rem;
+    }
+    #up-event .text{
+      margin-bottom: 1rem;
+      padding: 0 1rem;
+    }
+
+    #up-event .btn-btn, #wel-text .btn-btn{
+      margin-left: 1rem;
+    }
+
+    #up-event p:nth-of-type(3), #wel-text p:nth-of-type(1){
+      margin-bottom: 2rem;
+    }
+
+    .upcoming-title, .event-title {
+      padding: 0 1rem;
+    }
+
+    .upcoming-title{
+      font-size: 1.5rem;
+    }
+
+    .welcome .row div:nth-of-type(1){
+      padding: 5rem;
+    }
+
+    #showCase .showCase-text {
+      position: unset;
+    }
+
+    .event-title{
+      font-size: 1.2rem;
+    }
+
+    #showCase {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto;
+      overflow: hidden;
   }
+  #showCase p {
+      font-size: 1.2em;
+  }
+
+
+  }
+
+
+
 
 @media screen and (max-width: 991px){
     header {
@@ -809,18 +952,6 @@ footer ul li a{
     }
     header nav ul li ul li {
         width: 100%;
-    }
-
-    .subscribe form button{
-        width: 50vw;
-        height: 50px;
-        text-decoration: none;
-        box-shadow: var(--box-shadow);
-        padding: 0.6em 1.3em;
-        color: #000;
-        color: var(--nav-font-color);
-        background: var(--button-color);
-        border: none;
     }
     
 } 
