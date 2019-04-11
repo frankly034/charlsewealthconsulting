@@ -2,17 +2,14 @@ $(document).ready(function () {
   $(".menu-toggle").click(function () {
     $("nav").toggleClass("active");
   });
-  let items = 3;
-  if(window.screen.width < 500){
-    items = 2;
-  }
+  
   var owl = $('.owl-carousel');
   owl.owlCarousel({
-    items,
+    items: 2,
     loop: true,
     margin: 20,
     autoplay: true,
-    autoplayTimeout: 5000,
+    autoplayTimeout: 3000,
     autoplayHoverPause: true
   });
   $('.play').on('click', function () {
