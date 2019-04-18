@@ -227,6 +227,49 @@ hr {
   font-size: 0.9rem;
 }
 
+/*   Gallery */
+#showCaseEvent {
+  height: 70vh;
+  background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.9)), url(../img/gallery/img17.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  color: #fff;
+  overflow: hidden;
+}
+
+.showCase-text p{
+  font-size: 1em;
+}
+.showCase-text h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+.showCase-text h1 .spacing::before{
+  display: block;
+  content: '\A';
+} 
+
+#showCaseEvent .showCase-text h1 .spacing{
+  letter-spacing: 1.75rem;
+}
+
+#showCaseEvent .showCase-text {
+  position: relative;
+  left: 45rem;
+  top: 15rem;
+}
+
+#gallery-card {
+  box-shadow: 0 1px 5px rgba(185, 183, 183, 0.8);
+  border-radius: 10px;
+  padding: 10px 0;
+}
+
 /* ABout Section */
 #showCaseabout {
   height: 85vh;
@@ -342,6 +385,49 @@ hr {
 .why-us p {
   font-size: 1.3rem;
   
+}
+#card {
+  width: 400px;
+}
+
+/*   Our Service */
+#showCaseService {
+  height: 85vh;
+  background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.9)), url(../img/aboutimg.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+  margin: 0 auto;
+  color: #fff;
+  overflow: hidden;
+}
+
+.showCase-text p{
+  font-size: 1em;
+}
+.showCase-text h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+.showCase-text h1 .spacing::before{
+  display: block;
+  content: '\A';
+} 
+
+#showCaseService .showCase-text h1 .spacing{
+  letter-spacing: 1.75rem;
+}
+
+#showCaseService .showCase-text {
+  position: relative;
+  left: 45rem;
+  top: 15rem;
 }
 
 
@@ -577,7 +663,7 @@ hr {
 }
 
 
-.card{
+#teamlink .card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
