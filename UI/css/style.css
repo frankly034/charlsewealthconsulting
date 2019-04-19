@@ -80,6 +80,10 @@ img {
   padding-bottom: 3rem;
 }
 
+#contactForm {
+  background: #000;
+  padding:;
+}
 
 
 /*  Navigation Styling*/
@@ -430,6 +434,43 @@ hr {
   top: 15rem;
 }
 
+/*   Our SHOP */
+#showCaseShop {
+  height: 65vh;
+  background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.9)), url(../img/shop/high-performance-selling-small.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  color: #fff;
+  overflow: hidden;
+}
+
+.showCase-text p{
+  font-size: 1em;
+}
+.showCase-text h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+.showCase-text h1 .spacing::before{
+  display: block;
+  content: '\A';
+} 
+
+#showCaseShop .showCase-text h1 .spacing{
+  letter-spacing: 1.75rem;
+}
+
+#showCaseShop .showCase-text {
+  position: relative;
+  left: 45rem;
+  top: 15rem;
+}
+
 
 .our-product {
     margin: ;
@@ -459,7 +500,6 @@ hr {
     text-transform: uppercase;
     font-size: 1.5em;
 }
-
 
 
 .img-event {
