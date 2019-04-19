@@ -162,6 +162,43 @@ header nav ul li a:active{
 }
 
 
+#showCaseContact {
+    height: 60vh;
+  background: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.9));
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  color: #fff;
+  overflow: hidden;
+}
+
+
+.showCase-text p{
+  font-size: 1em;
+}
+.showCase-text h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+.showCase-text h1 .spacing::before{
+  display: block;
+  content: '\A';
+} 
+
+#showCaseContact .showCase-text h1 .spacing{
+  letter-spacing: 1.75rem;
+}
+
+#showCaseContact .showCase-text {
+  position: relative;
+  left: 45rem;
+  top: 15rem;
+}
+
 /* Slider Area */
 
 #showCase {
