@@ -354,7 +354,7 @@ hr {
 
 
 .bg-about {
-  padding: 1rem;
+  padding: 3rem;
   box-shadow: 0 1px 5px rgba(185, 183, 183, 0.8);
   font-size: 1rem;
   margin-bottom: 5rem;
@@ -388,36 +388,46 @@ hr {
   background: rgba(0, 0, 0, .3);
   padding: 10px;
   border-radius: 10px;
-  height: 28vh;
+  height: 35vh;
+  line-height: 1.5;
 }
 
 .why-us{
-  min-height: 50vh;
+  min-height: 40vh;
   display: flex;
   background-image: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.9)), url(../img/why.jpg);
   position: sticky;
   background-size: cover;
   background-position: center;
   font-size: 1rem;
-  padding: 10rem;
+  padding: 5rem;
   justify-content: center;
   text-align: center;
   color: #fff;
 }
 
 .testimonie {
-  min-height: 50vh;
-  display: flex;
+  min-height: 20vh;
   background-image: linear-gradient(rgba(0, 0, 75, 0.5), rgba(30, 0, 0, 0.9));
   position: sticky;
   background-size: cover;
   background-position: center;
   font-size: 1rem;
-  padding: 10rem;
+  padding: 5rem;
   justify-content: center;
   text-align: center;
   color: #fff;
 }
+.testimonie h1 {
+  padding-bottom: 3rem;
+  font-size: 2rem;
+  color: #d15107;
+  font-weight: bold;
+}
+
+
+
+
 .why-us h6 {
   font-weight: bold;
   font-size: 1.8rem;
@@ -676,6 +686,12 @@ hr {
   text-align: center;
   height: 40vh;
   padding: 2rem;
+}
+
+#bg-notice img {
+  height: 150px;
+  width: 200px;
+  border-radius: 20px;
 }
 
 #bg-notice h1{
@@ -989,6 +1005,11 @@ footer ul li a{
     text-decoration: none;
     color: #ada9a9;
     list-style: none;
+}
+
+footer ul li a:hover{
+  text-decoration: none;
+  color: #d15107;
 }
 footer ul li{
   margin-left: 0px;
