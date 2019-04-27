@@ -1,23 +1,40 @@
-$(document).ready(function() {
-  $(".menu-toggle").click(function() {
+$(document).ready(function () {
+  $(".menu-toggle").click(function () {
     $("nav").toggleClass("active");
   });
-  
-  $('.owl-carousel').owlCarousel({
-    rtl:true,
-    loop:true,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:5
-        }
-    }
+
+  var owl = $('.owl-carousel');
+  owl.owlCarousel({
+    items: 2,
+    loop: true,
+    margin: 20,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true
   });
+  $('.play').on('click', function () {
+    owl.trigger('play.owl.autoplay', [1000])
+  })
+  $('.stop').on('click', function () {
+    owl.trigger('stop.owl.autoplay')
+  })
 });
+
+
+var modal = document.querySelector(".modalx");
+var trigger = document.querySelector(".trigger");
+var closeButton = document.querySelector(".close-button");
+
+function toggleModal() {
+  modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+  if (event.target === modal) {
+    toggleModal();
+  }
+}
+
+trigger.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
