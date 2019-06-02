@@ -21,6 +21,7 @@ $(document).ready(function () {
 });
 
 
+  
 var modal = document.querySelector(".modalx");
 var trigger = document.querySelector(".trigger");
 var closeButton = document.querySelector(".close-button");
