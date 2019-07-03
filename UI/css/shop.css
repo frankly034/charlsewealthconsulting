@@ -66,9 +66,7 @@ body {
 }
 
 @media screen and (max-width:768px){
-    body{
-        overflow: hidden;
-    }
+   
     .nav-list {
         position: absolute;
         height: 92vh;
